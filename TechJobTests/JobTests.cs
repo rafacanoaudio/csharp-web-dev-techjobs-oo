@@ -69,7 +69,10 @@ namespace TechJobsOO
             Job testJob4 = new Job("Product tester", testEmployer, testLocation, testPositionType, testCoreCompetency);
             Job testJob5 = new Job("Product tester", testEmployer, testLocation, testPositionType, testCoreCompetency);
 
-            Assert.IsFalse(testJob4 Equals(testJob5));
+            Assert.IsFalse(testJob4.Equals(testJob5));
         }
+
+        //TODO: Build The ToString Method
+
     }
 }
