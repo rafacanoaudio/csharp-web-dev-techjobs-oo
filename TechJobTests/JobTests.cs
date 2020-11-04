@@ -5,10 +5,16 @@ namespace TechJobsOO
     [TestClass]
     public class JobTests
     {
-        // Arrange: testInitialize to create 2 Job objects with empty constructor
+        // Arrange 
         Job testJob1;
         Job testJob2;
         Job testJob3;
+        readonly Employer testEmployer = new Employer("ACME");
+        readonly Location testLocation = new Location("Desert");
+        readonly PositionType testPositionType = new PositionType("Quality control");
+        readonly CoreCompetency testCoreCompetency = new CoreCompetency("Persistence");
+        Job testJob4;
+        Job testJob5;
 
         [TestInitialize]
         public void CreateTwoJobObjects()
@@ -16,13 +22,6 @@ namespace TechJobsOO
             testJob1 = new Job();
             testJob2 = new Job();
         }
-
-        //[TestCleanup]
-        //public void CleanUpAfterTest()
-        //{
-        //    testJob1 = null;
-        //    testJob2 = null;
-        //}
 
         //empty constructor sets different ID values
         [TestMethod]
@@ -42,11 +41,6 @@ namespace TechJobsOO
         [TestMethod]
         public void TestJobConstructorSetsAllFields()
         {
-            //Arrange
-            Employer testEmployer = new Employer("ACME");
-            Location testLocation = new Location("Desert");
-            PositionType testPositionType = new PositionType("Quality control");
-            CoreCompetency testCoreCompetency = new CoreCompetency("Persistence");
             testJob3 = new Job("Product tester", testEmployer, testLocation, testPositionType, testCoreCompetency);
 
             //Assert
@@ -62,17 +56,24 @@ namespace TechJobsOO
         [TestMethod]
         public void TestJobsForEquality()
         {
-            Employer testEmployer = new Employer("ACME");
-            Location testLocation = new Location("Desert");
-            PositionType testPositionType = new PositionType("Quality control");
-            CoreCompetency testCoreCompetency = new CoreCompetency("Persistence");
-            Job testJob4 = new Job("Product tester", testEmployer, testLocation, testPositionType, testCoreCompetency);
-            Job testJob5 = new Job("Product tester", testEmployer, testLocation, testPositionType, testCoreCompetency);
+            testJob4 = new Job("Product tester", testEmployer, testLocation, testPositionType, testCoreCompetency);
+            testJob5 = new Job("Product tester", testEmployer, testLocation, testPositionType, testCoreCompetency);
 
             Assert.IsFalse(testJob4.Equals(testJob5));
         }
 
         //TODO: Build The ToString Method
 
+        //Should return a string with a blank line before and after the job information
+        [TestMethod]
+        public void JobToString_AddsBlankLines_ReturnTrue()
+        {
+            Job testJob6 = new Job("Product tester", testEmployer, testLocation, testPositionType, testCoreCompetency);
+
+            //Assert.IsTrue(string.IsNullOrEmpty(testJob6.ToString()));
+            Assert.IsTrue(testJob6.ToString().Contains(null));
+            //Assert.IsTrue(testJob6.ToString().Contains(string.Empty));
+
+        }
     }
 }
