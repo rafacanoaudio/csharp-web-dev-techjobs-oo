@@ -69,11 +69,36 @@ namespace TechJobsOO
         public void JobToString_AddsBlankLines_ReturnTrue()
         {
             Job testJob6 = new Job("Product tester", testEmployer, testLocation, testPositionType, testCoreCompetency);
-
-            //Assert.IsTrue(string.IsNullOrEmpty(testJob6.ToString()));
-            Assert.IsTrue(testJob6.ToString().Contains(null));
-            //Assert.IsTrue(testJob6.ToString().Contains(string.Empty));
+            string str = testJob6.ToString();
+            Assert.AreEqual("\n", str.Substring(0, 1));
+            Assert.AreEqual("\n", str.Substring(str.Length - 1, 1));
 
         }
+
+
+        // TODO: string should contain a label for each field,
+        //followed by the data stored in that field. Each field should be on its own line.
+        [TestMethod]
+        public void JobToString_LabelsEachFields_And_PutsEachOnOwnLine_ReturnTrue()
+        {
+            Job testJob7 = new Job("Product tester", testEmployer, testLocation, testPositionType, testCoreCompetency);
+
+            Assert.AreEqual("\nID: 17\nName: Product tester\nEmployer: ACME\nLocation: Desert\nPosition Type: Quality control\nCore Competency: Persistence\n", testJob7.ToString());
+        }
+
+        [TestMethod]
+        public void JobToString_EmptyFieldsAddsMessageAfterLabel_ReturnTrue()
+        {
+            Employer testEmployer = new Employer("");
+            Location testLocation = new Location("");
+            PositionType testPositionType = new PositionType("");
+            CoreCompetency testCoreCompetency = new CoreCompetency("");
+
+            Job testJob8 = new Job(null, testEmployer, testLocation, testPositionType, testCoreCompetency);
+            //Job testJob8 = new Job();
+            Assert.AreEqual("\nID: 20\nName: Data not available\n" +
+                "Employer: Data not available\nLocation: Data not available\nPosition Type: Data not available\nCore Competency: Data not available\n", testJob8.ToString());
+        }
+
     }
 }

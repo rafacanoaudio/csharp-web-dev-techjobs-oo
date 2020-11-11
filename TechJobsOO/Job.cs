@@ -40,6 +40,42 @@ namespace TechJobsOO
             return HashCode.Combine(Id);
         }
 
+        public override string ToString()
+        {
+            string dna = "Data not available";
+            //foreach (string parameter in this)
+            //{
+
+            //}
+            if (Name == null)
+            {
+                Name = dna;
+            }
+            if (EmployerName.Value == "")
+            {
+                EmployerName.Value = dna;
+            }
+            if (EmployerLocation.Value == "")
+            {
+                EmployerLocation.Value = dna;
+            }
+            if (JobType.Value == "")
+            {
+                JobType.Value = dna;
+            }
+            if (JobCoreCompetency.Value == "")
+            {
+                JobCoreCompetency.Value = dna;
+            }
+            return $@"
+ID: {Id}
+Name: {Name}
+Employer: {EmployerName}
+Location: {EmployerLocation}
+Position Type: {JobType}
+Core Competency: {JobCoreCompetency}
+";
+        }
 
 
     }
