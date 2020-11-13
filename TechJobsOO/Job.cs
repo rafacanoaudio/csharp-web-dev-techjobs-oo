@@ -43,38 +43,36 @@ namespace TechJobsOO
         public override string ToString()
         {
             string dna = "Data not available";
-            //foreach (string parameter in this)
-            //{
 
-            //}
+            if (Name == null && EmployerName == null && EmployerLocation == null && JobType == null && JobCoreCompetency == null)
+            {
+                return "Oops! This job does not seem to exist.";
+            }
+
+            //"Oops! This job does not seem to exist."
+        
+
             if (Name == null)
             {
                 Name = dna;
             }
-            if (EmployerName.Value == "")
+            if (String.IsNullOrWhiteSpace(EmployerName.Value))
             {
                 EmployerName.Value = dna;
             }
-            if (EmployerLocation.Value == "")
+            if (String.IsNullOrWhiteSpace(EmployerLocation.Value))
             {
                 EmployerLocation.Value = dna;
             }
-            if (JobType.Value == "")
+            if (String.IsNullOrWhiteSpace(JobType.Value))
             {
                 JobType.Value = dna;
             }
-            if (JobCoreCompetency.Value == "")
+            if (String.IsNullOrWhiteSpace(JobCoreCompetency.Value))
             {
                 JobCoreCompetency.Value = dna;
             }
-            return $@"
-ID: {Id}
-Name: {Name}
-Employer: {EmployerName}
-Location: {EmployerLocation}
-Position Type: {JobType}
-Core Competency: {JobCoreCompetency}
-";
+            return $"\nID: {Id}\nName: {Name}\nEmployer: {EmployerName}\nLocation: {EmployerLocation}\nPosition Type: {JobType}\nCore Competency: {JobCoreCompetency}\n";
         }
 
 

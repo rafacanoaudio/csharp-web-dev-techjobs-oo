@@ -95,9 +95,16 @@ namespace TechJobsOO
             CoreCompetency testCoreCompetency = new CoreCompetency("");
 
             Job testJob8 = new Job(null, testEmployer, testLocation, testPositionType, testCoreCompetency);
-            //Job testJob8 = new Job();
             Assert.AreEqual("\nID: 20\nName: Data not available\n" +
                 "Employer: Data not available\nLocation: Data not available\nPosition Type: Data not available\nCore Competency: Data not available\n", testJob8.ToString());
+        }
+
+        [TestMethod]
+        public void JobToString_IdOnly_ReturnsOopsMessage()
+        {
+            Job testJob9 = new Job();
+            Assert.AreEqual("Oops! This job does not seem to exist.", testJob9.ToString());
+
         }
 
     }
